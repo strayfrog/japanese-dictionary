@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語文型辭典</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>日本語文型辭典</h1>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜尋文法或關鍵字...">
+                </div>
+            </div>
+            <div class="word-list" id="wordList">
+                <!-- Word items will be injected here -->
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h2 id="contentTitle">請從左側選擇文型</h2>
+            </div>
+            <div class="content-body">
+                <pre id="contentBody" class="entry-content">
+                </pre>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
