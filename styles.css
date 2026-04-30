@@ -25,15 +25,17 @@ body {
     background-size: cover;
     background-attachment: fixed;
     color: var(--text-primary);
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh; /* 改為最小高度，允許內容撐開 */
+    overflow-x: hidden; /* 防止橫向跑版 */
+    overflow-y: auto;   /* 允許縱向捲動 */
 }
 
 .app-container {
     display: flex;
-    height: 100vh;
-    padding: 20px;
-    gap: 20px;
+    flex-wrap: wrap; /* 允許在窄螢幕下換行 */
+    min-height: 100vh;
+    padding: 10px; /* 手機端減少內距 */
+    gap: 16px;
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -287,4 +289,36 @@ rt {
 
 .fade-in {
     animation: fadeIn 0.4s ease forwards;
+}
+/* --- 行動裝置適配 (Mobile Fix) --- */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* 側邊欄與內容改為垂直排列 */
+        height: auto;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%; /* 側邊欄滿版 */
+        max-height: 400px; /* 限制側邊欄高度，避免擋住主內容 */
+        flex-shrink: unset;
+    }
+
+    .main-content {
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+    }
+
+    .content-header {
+        padding: 20px;
+    }
+
+    .content-header h2 {
+        font-size: 24px; /* 調小標題 */
+    }
+
+    .content-body {
+        padding: 16px;
+    }
 }
