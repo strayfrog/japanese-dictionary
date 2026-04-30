@@ -40,12 +40,12 @@ body {
 .app-container {
     display: flex;
     flex-direction: row;
-    width: 100vw !important;
+    width: 100% !important; /* 改用 100% 以提升 iframe 相容性 */
     min-height: 100vh;
     margin: 0 !important;
     padding: 0 !important;
     gap: 0;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     overflow-x: hidden;
 }
 
@@ -302,29 +302,33 @@ rt {
 /* --- 行動裝置適配 (Mobile Fix) --- */
 @media (max-width: 768px) {
     .app-container {
-        flex-direction: column; /* 側邊欄與內容改為垂直排列 */
+        flex-direction: column; /* 強制垂直堆疊 */
         height: auto;
-        padding: 10px;
+        min-height: 100vh; /* 確保背景漸層完整覆蓋行動版畫面 */
+        padding: 0; /* 移除外層 padding 以利滿版 */
     }
 
     .sidebar {
-        width: 100%; /* 側邊欄滿版 */
-        max-height: 400px; /* 限制側邊欄高度，避免擋住主內容 */
-        flex-shrink: unset;
+        width: 100% !important;
+        max-height: 50vh; /* 使用 viewport 單位，根據螢幕比例自動調整側邊欄高度 */
+        flex-shrink: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
     }
 
     .main-content {
-        width: 100%;
+        width: 100% !important;
         height: auto;
-        min-height: 500px;
+        flex: 1;
     }
 
     .content-header {
-        padding: 20px;
+        padding: 20px 16px;
     }
 
     .content-header h2 {
-        font-size: 24px; /* 調小標題 */
+        font-size: 24px;
+        word-break: break-all; /* 防止長標題在手機端撐破容器 */
     }
 
     .content-body {
