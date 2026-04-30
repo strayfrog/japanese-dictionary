@@ -32,12 +32,14 @@ body {
 
 .app-container {
     display: flex;
-    flex-wrap: wrap; /* 允許在窄螢幕下換行 */
+    flex-wrap: wrap;
     min-height: 100vh;
-    padding: 10px; /* 手機端減少內距 */
-    gap: 16px;
-    max-width: 1600px;
-    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+    /* 修改：取消固定最大寬度，確保在超寬螢幕下也能滿版 */
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
 }
 
 /* Glassmorphism utility */
